@@ -1,0 +1,9 @@
+[Plugin]
+Loader=python3
+Module=shutdowntimer
+Name=Shutdown Timer
+Description= Shutdown Timer
+Authors=Gopikrishnan R
+Copyright=Copyright © 2017 Gopikrishnan R
+Website=github.com/gkr09
+Icon=appointment-missed-symbolic
