@@ -1,4 +1,4 @@
-# Budgie Auto Power Widget
+# Budgie Shutdown Timer Applet
 Automatically Shutdown/Reboot/Hibernate/Suspend after a set time.
 
 ![Screenshot](screenshots/shutdowntimer1.png)
