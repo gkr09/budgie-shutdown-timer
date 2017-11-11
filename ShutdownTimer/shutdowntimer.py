@@ -169,15 +169,17 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
                 subprocess.run(['systemctl', "reboot"])
 
             elif self.selection=="Hibernate":
+                self.box.set_tooltip_text("Shutdown Timer")
                 self.stack.set_visible_child_name("vbox")          # Reset the stack to initial screen.
                 subprocess.run(['systemctl', "hibernate"]) 
 
             elif self.selection=="Suspend":
+                self.box.set_tooltip_text("Shutdown Timer")
                 self.stack.set_visible_child_name("vbox")
                 subprocess.run(['systemctl', "suspend"])
 
         except subprocess.CalledProcessError:                      # Command returned a non-zero exit code.
-            subprocess.Popen(['notify-send','Shutdown Timer: Error !'])
+            subprocess.Popen(['notify-send','Shutdown Timer: Error !','-i','appointment-missed-symbolic'])
 
     def get_time_formatted(self,secs):
         """ Return the Time of Action Execution as a String to display on the tooltip and widget screen. """
@@ -205,14 +207,14 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
         self.stack.set_visible_child_name("vbox2")
         self.t.start()                                                                      # Timer started.
 
-        subprocess.Popen(['notify-send', "{} at {}".format(self.selection,self.timestr)])   # Send Notification.
+        subprocess.Popen(['notify-send', "{} at {}".format(self.selection,self.timestr),'-i','appointment-missed-symbolic'])   # Send Notification.
 
     def cancel(self,button):
 
         self.t.cancel()                                            # Cancel the timer.
 
         self.stack.set_visible_child_name("vbox")                  # Reset the stack to initial screen.
-        subprocess.Popen(['notify-send', "Scheduled {} cancelled".format(self.selection)])
+        subprocess.Popen(['notify-send', "Scheduled {} cancelled".format(self.selection),'-i','appointment-missed-symbolic'])
         self.box.set_tooltip_text("Shutdown Timer")                # Reset the tooltip.
 
 #END
