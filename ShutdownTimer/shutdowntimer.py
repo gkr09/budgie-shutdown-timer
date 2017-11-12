@@ -169,7 +169,7 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
                 subprocess.run(['systemctl', "reboot"])
 
             elif self.selection=="Hibernate":
-                self.box.set_tooltip_text("Shutdown Timer")
+                self.box.set_tooltip_text("Shutdown Timer")        # Reset the tooltip.
                 self.stack.set_visible_child_name("vbox")          # Reset the stack to initial screen.
                 subprocess.run(['systemctl', "hibernate"]) 
 
