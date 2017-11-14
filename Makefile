@@ -5,9 +5,9 @@ INSTALLPATH ?= /lib/budgie-desktop/plugins
 budgie-shutdown-applet:
 	echo "Nothing to do"
 install: budgie-shutdown-applet
-	sudo mkdir -p $(INSTALLPATH)/org.budgie-desktop.applet.shutdowntimer
+	mkdir -p $(INSTALLPATH)/org.budgie-desktop.applet.shutdowntimer
 	for file in ShutdownTimer/*; \
 	do \
-		sudo install -m 0755 "$$file" $(INSTALLPATH)/org.budgie-desktop.applet.shutdowntimer/; \
+		install -m 0755 "$$file" $(INSTALLPATH)/org.budgie-desktop.applet.shutdowntimer/; \
 	done
 
