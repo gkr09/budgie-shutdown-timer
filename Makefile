@@ -1,10 +1,8 @@
-#Just for building packages.
+#Just for building packages. (eopkg for solus)
+
 DESTDIR ?=
-<<<<<<< HEAD
+
 INSTALLPATH ?= /usr/lib64/budgie-desktop/plugins
-=======
-INSTALLPATH ?= /lib/budgie-desktop/plugins
->>>>>>> a9b514a6ed0563f10c68f36f01319ba58ea7756f
 
 budgie-shutdown-applet:
 	echo "Nothing to do"
