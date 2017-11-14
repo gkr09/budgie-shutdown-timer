@@ -1,6 +1,6 @@
 DESTDIR ?=/lib/budgie-desktop/plugins
 
-budgieshutdowntimer:
+budgie-shutdown-applet:
 	echo "Nothing to do"
 install: budgie-shutdown-applet
 	mkdir $DESTDIR/org.budgie-desktop.applet.shutdowntimer
