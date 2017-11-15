@@ -176,7 +176,7 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
 
             elif self.selection=="Suspend":
                 self.box.set_tooltip_text("Shutdown Timer")
-		self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
+                self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
                 self.stack.set_visible_child_name("vbox")
                 subprocess.run(['systemctl', "suspend"])
 
