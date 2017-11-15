@@ -1,5 +1,4 @@
 #Just for building packages. (eopkg for solus)
-include ../Makefile.common
 
 DESTDIR ?=
 
