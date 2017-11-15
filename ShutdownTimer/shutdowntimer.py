@@ -170,7 +170,7 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
 
             elif self.selection=="Hibernate":
                 self.box.set_tooltip_text("Shutdown Timer")        # Reset the tooltip.
-		self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
+                self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
                 self.stack.set_visible_child_name("vbox")          # Reset the stack to initial screen.
                 subprocess.run(['systemctl', "hibernate"]) 
 
