@@ -11,7 +11,7 @@ budgie-shutdown-applet:
 install: budgie-shutdown-applet
 	mkdir -p $(DESTDIR)$(INSTALLPATH)/org.budgie-desktop.applet.shutdowntimer
 	mkdir -p $(DESTDIR)$(ICONPATH)
-	rm -f $(ICONDIR)/icon-theme.cache
+	#rm -f $(ICONDIR)/icon-theme.cache
 	for file in ShutdownTimer/*; \
 	do \
 		install -m 0755 "$$file" $(DESTDIR)$(INSTALLPATH)/org.budgie-desktop.applet.shutdowntimer/; \

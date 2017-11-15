@@ -170,16 +170,18 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
 
             elif self.selection=="Hibernate":
                 self.box.set_tooltip_text("Shutdown Timer")        # Reset the tooltip.
+		self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
                 self.stack.set_visible_child_name("vbox")          # Reset the stack to initial screen.
                 subprocess.run(['systemctl', "hibernate"]) 
 
             elif self.selection=="Suspend":
                 self.box.set_tooltip_text("Shutdown Timer")
+		self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
                 self.stack.set_visible_child_name("vbox")
                 subprocess.run(['systemctl', "suspend"])
 
         except subprocess.CalledProcessError:                      # Command returned a non-zero exit code.
-            subprocess.Popen(['notify-send','Shutdown Timer: Error !','-i','appointment-missed-symbolic'])
+            subprocess.Popen(['notify-send','Shutdown Timer: Error !','-i','shutdown-timer'])
 
     def get_time_formatted(self,secs):
         """ Return the Time of Action Execution as a String to display on the tooltip and widget screen. """
@@ -208,14 +210,14 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
         self.img.set_from_icon_name('shutdown-timer-running',Gtk.IconSize.BUTTON)
         self.t.start()                                                                      # Timer started.
 
-        subprocess.Popen(['notify-send', "{} at {}".format(self.selection,self.timestr),'-i','appointment-missed-symbolic'])   # Send Notification.
+        subprocess.Popen(['notify-send', "{} at {}".format(self.selection,self.timestr),'-i','shutdown-timer'])   # Send Notification.
 
     def cancel(self,button):
 
         self.t.cancel()                                            # Cancel the timer.
         self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
         self.stack.set_visible_child_name("vbox")                  # Reset the stack to initial screen.
-        subprocess.Popen(['notify-send', "Scheduled {} cancelled".format(self.selection),'-i','appointment-missed-symbolic'])
+        subprocess.Popen(['notify-send', "Scheduled {} cancelled".format(self.selection),'-i','shutdown-timer'])
         self.box.set_tooltip_text("Shutdown Timer")                # Reset the tooltip.
 
 #END
