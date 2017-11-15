@@ -66,7 +66,7 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
         """ Drawing the Applet UI """
 
         self.popover = Budgie.Popover.new(self.box)
-        self.img = Gtk.Image.new_from_icon_name("appointment-missed-symbolic", Gtk.IconSize.BUTTON)
+        self.img = Gtk.Image.new_from_icon_name("shutdown-timer", Gtk.IconSize.BUTTON)
         self.label2 = Gtk.Label("in")
         self.button = Gtk.Button(label="Start")
         context_start = self.button.get_style_context()
@@ -205,6 +205,7 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
         self.timetext.set_text(self.selection+" scheduled at \n"+self.timestr)              # Text on Timer Running Screen.
         self.box.set_tooltip_text(self.selection+" scheduled at "+self.timestr)
         self.stack.set_visible_child_name("vbox2")
+        self.img.set_from_icon_name('shutdown-timer-running',Gtk.IconSize.BUTTON)
         self.t.start()                                                                      # Timer started.
 
         subprocess.Popen(['notify-send', "{} at {}".format(self.selection,self.timestr),'-i','appointment-missed-symbolic'])   # Send Notification.
@@ -212,7 +213,7 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
     def cancel(self,button):
 
         self.t.cancel()                                            # Cancel the timer.
-
+        self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
         self.stack.set_visible_child_name("vbox")                  # Reset the stack to initial screen.
         subprocess.Popen(['notify-send', "Scheduled {} cancelled".format(self.selection),'-i','appointment-missed-symbolic'])
         self.box.set_tooltip_text("Shutdown Timer")                # Reset the tooltip.
