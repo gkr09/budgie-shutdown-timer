@@ -210,14 +210,14 @@ class BudgieShutdownTimerApplet(Budgie.Applet):
         self.img.set_from_icon_name('shutdown-timer-running',Gtk.IconSize.BUTTON)
         self.t.start()                                                                      # Timer started.
 
-        subprocess.Popen(['notify-send', "{} at {}".format(self.selection,self.timestr),'-i','shutdown-timer'])   # Send Notification.
+        subprocess.Popen(['notify-send', "Shutdown Timer",'-i','shutdown-timer', "{} at {}".format(self.selection,self.timestr)]) # Send Notification.
 
     def cancel(self,button):
 
         self.t.cancel()                                            # Cancel the timer.
         self.img.set_from_icon_name('shutdown-timer',Gtk.IconSize.BUTTON)
         self.stack.set_visible_child_name("vbox")                  # Reset the stack to initial screen.
-        subprocess.Popen(['notify-send', "Scheduled {} cancelled".format(self.selection),'-i','shutdown-timer'])
+        subprocess.Popen(['notify-send',"Shutdown Timer",'-i','shutdown-timer',"Scheduled {} cancelled".format(self.selection)])
         self.box.set_tooltip_text("Shutdown Timer")                # Reset the tooltip.
 
 #END
